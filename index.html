@@ -8,17 +8,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-      <h1 class="class2"> Xilinx FPGA online report parser </h1>
+      <h1 class="class2"> Online report parser for Xilinx Vivado build reports</h1>
 
-      <h2 class="class2">This site parses your FPGA project's resource utilization report</h2>
+      <h2 class="class2">This site parses your FPGA project's report files</h2>
 
       <div class="class2">
-        <p>First build your project successfuly!</p>
-        <p>Then drop here your Vivado project's interesting files: </p>
-        <ol>
-          <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_utilization_placed.rpt</strong>"</li>
-          <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_timing_summary_routed.rpt</strong>"</li>
-        </ol>
+        <p>
+        First build your project successfuly!<br>
+        Then drop here your Vivado project's interesting files:
+            <ul>
+                <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_utilization_placed.rpt</strong>"</li>
+                <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_timing_summary_routed.rpt</strong>"</li>
+                <li>Etc...</li>
+            </ul>
+        Currently only utilization files are parsed and visualized
+        </p>
         <p class="class1">If you don't have any .rpt files on your machine feel free to use this example report file for testing:
           <br>
 
@@ -56,40 +60,10 @@
       </div>
 
       <div>
-        <canvas id="myChart"></canvas>
+        <canvas id="utilizChart" class="chart1"></canvas>
       </div>
       <script src="scripts/main.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-      <script>
-        const labels = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-        ];
-        const data = {
-          labels: labels,
-          datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
-          }]
-        };
+      <script src="node_modules/chart.js/dist/chart.js"></script>
 
-        const config = {
-          type: 'line',
-          data,
-          options: {}
-        };
-        // === include 'setup' then 'config' above ===
-
-        var myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
-      </script>
     </body>
 </html>

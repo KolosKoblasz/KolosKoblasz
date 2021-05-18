@@ -71,6 +71,13 @@ table.table_resource {
   width: 80% ;
 }
 
+canvas{
+
+  width:80% !important;
+  height:600px !important;
+
+}
+
 tr:nth-child(even) {background: #E0E0E0}
 tr:nth-child(odd) {background: #CCFFCC}
 

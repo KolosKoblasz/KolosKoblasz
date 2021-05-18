@@ -1,0 +1,25 @@
+{
+  "name": "fpga_report_parser",
+  "version": "1.0.0",
+  "description": "This web project can parse Xilinx Vivado's report (.rpt) files to visualize FPGA resource usage, or timing issues",
+  "main": "main.js",
+  "scripts": {
+    "test": "Standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KolosKoblasz/KolosKoblasz.git"
+  },
+  "keywords": [
+    "fpga",
+    "vivado",
+    "parsing",
+    "report"
+  ],
+  "author": "Kolos Koblasz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KolosKoblasz/KolosKoblasz/issues"
+  },
+  "homepage": "https://github.com/KolosKoblasz/KolosKoblasz#readme"
+}
