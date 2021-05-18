@@ -1,15 +1,3 @@
-let myImage = document.querySelector('img');
-
-myImage.onclick = function() {
-    let mySrc = myImage.getAttribute('src');
-    if(mySrc === 'images/fpga.jpeg') {
-      myImage.setAttribute('src','images/eye.jpeg');
-    } else {
-      myImage.setAttribute('src','images/fpga.jpeg');
-    }
-}
-
-
 const inputElement = document.getElementById("input");
 inputElement.addEventListener("change", handleFiles, false);
 function handleFiles() {

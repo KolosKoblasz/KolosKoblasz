@@ -2,44 +2,94 @@
 <html>
     <head>
       <meta charset="utf-8">
-      <title>My FPGA report parser page</title>
+      <title>FPGA report parser page</title>
       <link href="styles/style.css" rel="stylesheet">
       <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-      <h1> Xilinx FPGA utilization report parser web page </h1>
-      <img src="images/fpga.jpeg" alt="My test image">
-      <h2 class="class1">This site parses your FPGA project's resource utilization report</h2>
+      <h1 class="class2"> Xilinx FPGA online report parser </h1>
 
-      <p class="class2">First build your project successfuly!</p>
-      <p class="class2">Then drop here your Vivado project's interesting files: </p>
-      <ol>
-        <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_utilization_placed.rpt</strong>"</li>
-        <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_timing_summary_routed.rpt</strong>"</li>
-      </ol>
+      <h2 class="class2">This site parses your FPGA project's resource utilization report</h2>
 
-      <form name="uploadForm">
-        <div>
-          <input type="file" id="input" name="myFiles" multiple>
+      <div class="class2">
+        <p>First build your project successfuly!</p>
+        <p>Then drop here your Vivado project's interesting files: </p>
+        <ol>
+          <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_utilization_placed.rpt</strong>"</li>
+          <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_timing_summary_routed.rpt</strong>"</li>
+        </ol>
+        <p class="class1">If you don't have any .rpt files on your machine feel free to use this example report file for testing:
+          <br>
 
-        </div>
+          <a href="https://drive.google.com/file/d/1F-fbiyGirXFJYvY6m4Rrix24GExgSevJ/view?usp=sharing" download="bft_utilization_placed.rpt" target="_blank">Example report file</a>
 
-        <div id="file_table"></div>
+        </p>
+      </div>
 
-      </form>
+      <div class="class2">
+        <h2>Report upload</h2>
 
-      <button id="parse_button"> Parse files</button>
-      <h2> Build information</h2>
-      <p> You can find basic information about the build here</p>
-      <div id="info_table"></div>
+          <form name="uploadForm">
+            <div>
+              <input type="file" id="input" name="myFiles" multiple>
 
-      <h2> Resource utilization</h2>
-      <p> Each column shows a specific FPGA resource category</p>
-      <div id="resource_table"></div>
+            </div>
 
+            <div id="file_table"></div>
 
+          </form>
 
-    <script src="scripts/main.js"></script>
+        <button id="parse_button"> Parse files</button>
+      </div>
+
+      <div class="class2">
+        <h2> Build information</h2>
+        <p> You can find basic information about the build here</p>
+        <div id="info_table"></div>
+      </div>
+
+      <div class="class2">
+        <h2> Resource utilization</h2>
+        <p> Each column shows a specific FPGA resource category</p>
+        <div id="resource_table"></div>
+      </div>
+
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+      <script src="scripts/main.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const labels = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+        ];
+        const data = {
+          labels: labels,
+          datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+          }]
+        };
+
+        const config = {
+          type: 'line',
+          data,
+          options: {}
+        };
+        // === include 'setup' then 'config' above ===
+
+        var myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+      </script>
     </body>
 </html>

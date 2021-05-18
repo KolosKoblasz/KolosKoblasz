@@ -9,8 +9,19 @@ http://www.tooplate.com/view/2111-pro-line
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 17px;
-  color: #626262;
+  color: #000000;
   overflow-x: hidden;
+  background-image: url(../images/gizmo_cropped.jpg), linear-gradient(#E4E0E0, #CCFFCC);
+  background-repeat: no-repeat;
+  background-size: 80%, 100%;
+  background-position: center;
+  background-attachment: fixed;
+  background-opacity: 0.5;
+}
+
+.class2{
+  background: rgba(170,255,170,0.5);
+
 }
 
 textarea {
@@ -26,12 +37,16 @@ a:hover {
 }
 
 button {
-  border: none;
+  border: green;
 }
 
 a,
 button {
   cursor: pointer;
+}
+
+h1 {
+  font-size: 4.4rem;
 }
 
 h2 {
@@ -58,6 +73,7 @@ table.table_resource {
 
 tr:nth-child(even) {background: #E0E0E0}
 tr:nth-child(odd) {background: #CCFFCC}
+
 
 .tm-page-header {
   color: #444444;
