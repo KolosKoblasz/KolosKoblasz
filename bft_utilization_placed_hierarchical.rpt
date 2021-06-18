@@ -1,0 +1,97 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (lin64) Build 3064766 Wed Nov 18 09:12:47 MST 2020
+| Date         : Thu Jun 17 13:55:08 2021
+| Host         : kolos-MS-7A93 running 64-bit Ubuntu 18.04.5 LTS
+| Command      : report_utilization -hierarchical -file ./example/project_demo/project_demo.runs/impl_1/bft_utilization_placed_hierarchical.rpt
+| Design       : bft
+| Device       : 7k70tfbg484-2
+| Design State : Routed
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++------------------------------+------------------+------------+------------+---------+------+------+--------+--------+------------+
+|           Instance           |      Module      | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++------------------------------+------------------+------------+------------+---------+------+------+--------+--------+------------+
+| bft                          |            (top) |       1657 |       1657 |       0 |    0 | 1338 |     16 |      0 |         64 |
+|   (bft)                      |            (top) |          7 |          7 |       0 |    0 |   58 |      0 |      0 |          0 |
+|   arnd1                      |          round_1 |        229 |        229 |       0 |    0 |    0 |      0 |      0 |         16 |
+|     transformLoop[0].ct      | coreTransform_53 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[1].ct      | coreTransform_54 |         31 |         31 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[2].ct      | coreTransform_55 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[3].ct      | coreTransform_56 |         25 |         25 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[4].ct      | coreTransform_57 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[5].ct      | coreTransform_58 |         24 |         24 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[6].ct      | coreTransform_59 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[7].ct      | coreTransform_60 |         26 |         26 |       0 |    0 |    0 |      0 |      0 |          2 |
+|   arnd2                      |          round_2 |        237 |        237 |       0 |    0 |    0 |      0 |      0 |         16 |
+|     ct0                      | coreTransform_45 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct1                      | coreTransform_46 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct2                      | coreTransform_47 |         28 |         28 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct3                      | coreTransform_48 |         28 |         28 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct4                      | coreTransform_49 |         31 |         31 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct5                      | coreTransform_50 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct6                      | coreTransform_51 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     ct7                      | coreTransform_52 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          2 |
+|   arnd3                      |          round_3 |        241 |        241 |       0 |    0 |    0 |      0 |      0 |         16 |
+|     transformLoop[0].ct0     | coreTransform_37 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[0].ct1     | coreTransform_38 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[1].ct0     | coreTransform_39 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[1].ct1     | coreTransform_40 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[2].ct0     | coreTransform_41 |         31 |         31 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[2].ct1     | coreTransform_42 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[3].ct0     | coreTransform_43 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[3].ct1     | coreTransform_44 |         24 |         24 |       0 |    0 |    0 |      0 |      0 |          2 |
+|   arnd4                      |          round_4 |        237 |        237 |       0 |    0 |    0 |      0 |      0 |         16 |
+|     transformLoop[0].ct      |    coreTransform |         28 |         28 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[1].ct      | coreTransform_30 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[2].ct      | coreTransform_31 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[3].ct      | coreTransform_32 |         31 |         31 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[4].ct      | coreTransform_33 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[5].ct      | coreTransform_34 |         32 |         32 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[6].ct      | coreTransform_35 |         31 |         31 |       0 |    0 |    0 |      0 |      0 |          2 |
+|     transformLoop[7].ct      | coreTransform_36 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |          2 |
+|   egressLoop[0].egressFifo   |       FifoBuffer |         70 |         70 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_29 |         70 |         70 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[1].egressFifo   |     FifoBuffer_0 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_28 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[2].egressFifo   |     FifoBuffer_1 |         38 |         38 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_27 |         38 |         38 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[3].egressFifo   |     FifoBuffer_2 |        102 |        102 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_26 |        102 |        102 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[4].egressFifo   |     FifoBuffer_3 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_25 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[5].egressFifo   |     FifoBuffer_4 |         38 |         38 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_24 |         38 |         38 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[6].egressFifo   |     FifoBuffer_5 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_23 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   egressLoop[7].egressFifo   |     FifoBuffer_6 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_22 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[0].ingressFifo |     FifoBuffer_7 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_21 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[1].ingressFifo |     FifoBuffer_8 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_20 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[2].ingressFifo |     FifoBuffer_9 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_19 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[3].ingressFifo |    FifoBuffer_10 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_18 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[4].ingressFifo |    FifoBuffer_11 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_17 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[5].ingressFifo |    FifoBuffer_12 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_16 |         39 |         39 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[6].ingressFifo |    FifoBuffer_13 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |    async_fifo_15 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|   ingressLoop[7].ingressFifo |    FifoBuffer_14 |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
+|     buffer_fifo              |       async_fifo |         40 |         40 |       0 |    0 |   80 |      1 |      0 |          0 |
++------------------------------+------------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

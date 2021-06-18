@@ -21,11 +21,29 @@ class Resource {
   }
 }
 
+class HieararhicResource {
+  constructor(total_luts, logic_luts, lutrams, srls, ffs , ramb36 , ramb18 , dsp ) {
+    this.total_luts         = total_luts;
+    this.logic_luts         = logic_luts;
+    this.lutrams            = lutrams;
+    this.srls               = srls;
+    this.ffs                = ffs;
+    this.ramb36             = ramb36;
+    this.ramb18             = ramb18;
+    this.dsp                = dsp;
+  }
+
+  // Methods
+  getUtilization() {
+    return parseFloat(this.util)
+  }
+}
+
 document.getElementById("parse_button").addEventListener("click", Parse, false);
 document.getElementById("input").addEventListener("change", updateFileTable, false);
 const inputElement = document.getElementById("input");
 
-var Targets = [
+var UtilTargets = [
   ['|Date:'           , 'Build Time',    'info'],
   ['|ToolVersion:'    , 'Tool Version',  'info'],
   ['|Host:'           , 'Host Machine',  'info'],
@@ -35,7 +53,7 @@ var Targets = [
   ['|SliceRegisters|' , 'Register',      'rsrc'],
   ['|RAMB36/FIFO*|'   , 'RAMB36',        'rsrc'],
   ['|RAMB18|'         , 'RAMB18',        'rsrc'],
-  ['|DSPs|'           , 'DSP',      'rsrc'],
+  ['|DSPs|'           , 'DSP',           'rsrc'],
   ['|BondedIOB|'      , 'I/O',           'rsrc'],
   ['|MMCME2_ADV|'     , 'MMCM',          'rsrc'],
   ['|PLLE2_ADV|'      , 'PLL',           'rsrc']
@@ -82,6 +100,25 @@ function makeFilelistTable(myArray) {
     return result;
 }
 
+function getWhiteSpaces(line) {
+    if(line[0] != '|'){
+        return 0
+    }
+
+    var ws_num = 0
+    for(let i=1; i<line.length; i++)
+    {
+        if(line[i] != ' '){
+            return ws_num
+        }
+        else{
+            ws_num++
+        }
+
+
+    }
+
+}
 
 function Parse(){
     const fileList          = inputElement.files
@@ -96,23 +133,23 @@ function Parse(){
         var ResourceArray   = []
 
         for (var i=0; i<file_lines_no_ws.length; i++){
-            for (var k=0; k<Targets.length; k++){
-                if(file_lines_no_ws[i].includes(Targets[k][0])){
+            for (var k=0; k<UtilTargets.length; k++){
+                if(file_lines_no_ws[i].includes(UtilTargets[k][0])){
                 line_parts       = file_lines[i].split('|')
                 line_parts_no_ws = file_lines_no_ws[i].split('|')
 
-                    if(Targets[k][2] == 'info'){
+                    if(UtilTargets[k][2] == 'info'){
                         let property = line_parts[1].substring(line_parts[1].indexOf(":") + 1)
-                        let item = new Info(Targets[k][1], Targets[k][0], property);
+                        let item = new Info(UtilTargets[k][1], UtilTargets[k][0], property);
                         InfoArray.push(item)
                     }
-                    else if(Targets[k][2] == 'rsrc'){
-                    let item = new Resource(Targets[k][1], Targets[k][0], line_parts_no_ws[2], line_parts_no_ws[4], line_parts_no_ws[5]);
+                    else if(UtilTargets[k][2] == 'rsrc'){
+                    let item = new Resource(UtilTargets[k][1], UtilTargets[k][0], line_parts_no_ws[2], line_parts_no_ws[4], line_parts_no_ws[5]);
                     ResourceArray.push(item)
                     }
 
-                //console.table(Targets)
-                Targets.splice(k,1)//Remove search target from array to avoidmultiple entries
+                //console.table(UtilTargets)
+                UtilTargets.splice(k,1)//Remove search target from array to avoidmultiple entries
                 }
             }
         }
@@ -158,10 +195,67 @@ function Parse(){
 
     }
 
+    var reader_hier_util        = new FileReader();
+    reader_hier_util.onload     = function(e) {
+        let file_content        = e.target.result
+        let file_lines          = file_content.split('\n')//Split file into array of lines
+        let file_content_no_ws  = file_content.replace(/ /g, ""); //Remove whitespaces from file
+        let file_lines_no_ws    = file_content_no_ws.split('\n')//Split file into array of lines
+
+
+        for (let i=0; i<file_lines_no_ws.length; i++){
+            if(file_lines_no_ws[i].includes('|Instance|Module|')){
+                var hier_util_types = file_lines[i].split('|')
+                hier_util_types = hier_util_types.slice(1,hier_util_types.length-1)
+                var root_line_index = i + 2
+            }
+        }
+
+        root_values = file_lines_no_ws[root_line_index].split('|')
+        root_values = root_values.slice(1,root_values.length-1)
+        ws_num      = getWhiteSpaces(file_lines[root_line_index])
+
+        tree = new TreeModel()
+        root = tree.parse({name: 'root', ws_num: ws_num, values: root_values,  children: []})
+
+        current_node = root
+        iter_cntr = 0
+        for (let i=root_line_index+1; i<file_lines.length; i++){
+            iter_cntr ++
+            ws_num = getWhiteSpaces(file_lines[i])
+            if(ws_num == 0)
+                break
+
+            node_values = file_lines_no_ws[i].split('|')
+            node_values = node_values.slice(1,node_values.length-1)
+            node = tree.parse({name: 'leaf_' + iter_cntr.toString(), ws_num: ws_num, values: node_values,  children: []})
+            if(current_node.model.ws_num < ws_num){
+                current_node.addChild(node);
+            }
+            else if(current_node.model.ws_num == ws_num){
+                current_node.parent.addChild(node);
+            }
+            else if(current_node.model.ws_num > ws_num){
+                current_node.parent.parent.addChild(node);
+            }
+            current_node = node
+
+
+
+        }
+
+        console.log(root)
+    }
+
     for (var i=0;i<fileList.length;i++)
     {
         if(fileList[i].name.includes('_utilization_placed.rpt')){
             reader_util.readAsText(fileList[i])
+
+        }
+
+        if(fileList[i].name.includes('_utilization_placed_hierarchical.rpt')){
+            reader_hier_util.readAsText(fileList[i])
 
         }
     }
