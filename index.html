@@ -15,23 +15,22 @@
         <div class="class2">
             <p>
             First build your project successfuly!<br>
-            Then drop here your Vivado project's interesting files:
-            <ul>
-                <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_utilization_placed.rpt</strong>"</li>
-                <li>"YourProjectFolder/project<strong>.runs/impl_</strong>n/top<strong>_timing_summary_routed.rpt</strong>"</li>
-                <li>"pwd
-                /home/kolos
-                report_utilization -hierarchical  -file ./example/project_demo/project_demo.runs/               impl_1/bft_utilization_placed_hierarchical.rpt
-                /home/kolos/example/project_demo/project_demo.runs/impl_1/bft_utilization_placed_hierarchical.rpt"
-                </li>
-                <li>Etc...</li>
-            </ul>
-            Currently only utilization files are parsed and visualized
+            Upload your Vivado project's interesting files<br>
+            (the bold parts must not be changed in the file names in order to successfully parse the report files):
+                <ul>
+                    <li>"YourProjectFolder/project.runs/impl_n/top<strong>_utilization_placed.rpt</strong>"</li>
+                    <li>"YourProjectFolder/project.runs/impl_n/top<strong>_timing_summary_routed.rpt</strong>"</li>
+                    <li>"YourProjectFolder/project.runs/impl_n/top<strong>_utilization_placed_hierarchical.rpt</strong>"</li>
+                    Hierarchical report file can be created by the following Vivado TCL command (modify the command according to your case):<br>
+                    "report_utilization -hierarchical  -file ./YourProjectFolder/project.runs/impl_n/top<strong>_utilization_placed_hierarchical.rpt</strong>"
+                    <li>Etc...</li>
+                </ul>
+                Currently only utilization files are parsed and visualized
             </p>
             <p class="class1">
                 If you don't have any .rpt files on your machine feel free to use this example report file for testing:
                 <br>
-                <a href="https://drive.google.com/file/d/1F-fbiyGirXFJYvY6m4Rrix24GExgSevJ/view?usp=sharing" download="bft_utilization_placed.rpt" target="_blank">Example report file</a>
+                <a href="https://drive.google.com/file/d/1oMgJ7wQAOuI2ypEb-zF_8BKd3rhZAdlD/view?usp=sharing" download="example_files.zip" target="_blank">Example report files</a>
 
             </p>
         </div>
@@ -68,8 +67,14 @@
             <canvas id="utilizChart" class="chart1"></canvas>
       </div>
 
-      <script src="scripts/main.js"></script>
-      <script src="node_modules/tree-model/dist/TreeModel.js"></script>
+      <div class="class2">
+            <h2> Hierarhic module resource utilization</h2>
+            <p> You can find details about each sub-modules resource usage</p>
+            <div id="hier_resrc_table"></div>
+      </div>
+
+      <script src="./scripts/main.js"></script>
+      <script src="./node_modules/tree-model/dist/TreeModel.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     </body>

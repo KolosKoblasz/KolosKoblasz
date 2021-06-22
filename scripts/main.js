@@ -100,6 +100,36 @@ function makeFilelistTable(myArray) {
     return result;
 }
 
+function makeHierResourceTable(hier_util_types ,tree_struct) {
+    var result = '<table border=0 class="hier_resrc_table">';
+
+    result += "<tr>";
+    for(let i=0; i<hier_util_types.length; i++)
+    {
+            result += "<td>" + hier_util_types[i] + "</td>";
+    }
+    result += "</tr>";
+
+    tree_struct.walk({strategy: 'pre'},
+        function (node) {
+            result += "<tr>";
+            for(let i=0; i<node.model.values.length; i++)
+            {
+                if(i==0)
+                    result += "<td>" +  "&nbsp".repeat(node.model.ws_num) + node.model.values[i] + '</td>';
+                else
+                    result += "<td>" + node.model.values[i] + "</td>";
+            }
+
+            result += "</tr>";
+        }
+    );
+
+    result += "</table>";
+
+    return result;
+}
+
 function getWhiteSpaces(line) {
     if(line[0] != '|'){
         return 0
@@ -156,6 +186,7 @@ function Parse(){
 
         document.getElementById("info_table").innerHTML = makeInfoTable(InfoArray)
         document.getElementById("resource_table").innerHTML = makeResourceTable(ResourceArray)
+        document.getElementById('utilizChart').height = 600;
 
         console.log(InfoArray)
         console.table(ResourceArray)
@@ -243,8 +274,9 @@ function Parse(){
 
 
         }
-
         console.log(root)
+        //Visualise the data structure
+        document.getElementById("hier_resrc_table").innerHTML = makeHierResourceTable(hier_util_types, root)
     }
 
     for (var i=0;i<fileList.length;i++)
